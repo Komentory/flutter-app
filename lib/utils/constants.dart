@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart'
 // See: https://stackoverflow.com/a/58552304
 
 /// Desktop devices getter.
+/// See: https://github.com/bitsdojo/bitsdojo_window/issues/78
 get isDesktop {
   return defaultTargetPlatform == TargetPlatform.macOS ||
       defaultTargetPlatform == TargetPlatform.windows ||
