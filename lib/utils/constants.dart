@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart' show Color;
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, TargetPlatform;
 
 // See: https://stackoverflow.com/a/58552304
+
+/// Desktop devices getter.
+get isDesktop {
+  return defaultTargetPlatform == TargetPlatform.macOS ||
+      defaultTargetPlatform == TargetPlatform.windows ||
+      defaultTargetPlatform == TargetPlatform.linux;
+}
 
 /// The enum for the Komentory brand's colors (light theme, by default).
 enum KomentoryLightTheme {

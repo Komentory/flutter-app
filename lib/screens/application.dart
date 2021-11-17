@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/foundation.dart';
 
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/screens/sign_in/screen.dart';
@@ -19,6 +21,7 @@ class KomentoryApp extends StatelessWidget {
         textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme,
         ).copyWith(
+          bodyText2: TextStyle(color: KomentoryLightTheme.secondary.color),
           subtitle1: TextStyle(color: KomentoryLightTheme.secondary.color),
           headline4: TextStyle(color: KomentoryLightTheme.primary.color),
         ),
@@ -42,6 +45,7 @@ class KomentoryApp extends StatelessWidget {
         textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme,
         ).copyWith(
+          bodyText2: TextStyle(color: KomentoryDarkTheme.secondary.color),
           subtitle1: TextStyle(color: KomentoryDarkTheme.secondary.color),
           headline4: TextStyle(color: KomentoryDarkTheme.primary.color),
         ),
@@ -69,7 +73,9 @@ class KomentoryApp extends StatelessWidget {
       ),
       initialRoute: '/sign-in',
       routes: <String, WidgetBuilder>{
-        '/sign-in': (_) => const SignInScreen(),
+        '/sign-in': (_) => isDesktop
+            ? MoveWindow(child: const SignInScreen())
+            : const SignInScreen(),
       },
     );
   }

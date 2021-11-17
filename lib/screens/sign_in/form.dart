@@ -10,54 +10,100 @@ class SignInForm extends StatefulWidget {
 }
 
 class _SignInFormState extends State<SignInForm> {
-  // Set fields controllers.
-  final _emailFieldController = TextEditingController();
-  final _passwordFieldController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Text(
-          'Sign In',
+          'Hey, friend!',
           style: Theme.of(context).textTheme.headline4,
         ),
+        const SizedBox(height: 16),
+        Text(
+          'Choose the login method that is most convenient for you and we\'re already waiting for you inside.',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
         const SizedBox(height: 24),
-        TextFormField(
-          controller: _emailFieldController,
-          keyboardType: TextInputType.emailAddress,
-          decoration: const InputDecoration(
-            labelText: 'Enter your email address',
-            prefixIcon: Icon(CupertinoIcons.at),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(16.0)),
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
-        TextFormField(
-          controller: _passwordFieldController,
-          keyboardType: TextInputType.visiblePassword,
-          obscureText: true,
-          autocorrect: false,
-          decoration: const InputDecoration(
-            labelText: 'Enter your password',
-            prefixIcon: Icon(CupertinoIcons.lock),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(16.0)),
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
         ElevatedButton(
-          child: const Text('Sign In', style: TextStyle(fontSize: 16)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                'assets/icons/google_logo.png',
+                scale: 24,
+              ),
+              const SizedBox(width: 16),
+              const Text(
+                'Continue with Google',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
           style: ElevatedButton.styleFrom(
+            onPrimary: Colors.black87,
+            primary: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
             padding: const EdgeInsets.symmetric(
               vertical: 20.0,
-              horizontal: 28.0,
+            ),
+          ),
+          onPressed: () {},
+        ),
+        const SizedBox(height: 10),
+        ElevatedButton(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                'assets/icons/facebook_logo.png',
+                scale: 24,
+              ),
+              const SizedBox(width: 16),
+              const Text(
+                'Continue with Facebook',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            onPrimary: Colors.white,
+            primary: const Color(0xFF1877F2),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 20.0,
+            ),
+          ),
+          onPressed: () {},
+        ),
+        const SizedBox(height: 10),
+        ElevatedButton(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                'assets/icons/discord_logo.png',
+                scale: 24,
+              ),
+              const SizedBox(width: 16),
+              const Text(
+                'Continue with Discord',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            onPrimary: Colors.white,
+            primary: const Color(0xFF5865F2),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 20.0,
             ),
           ),
           onPressed: () {},

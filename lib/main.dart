@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
+import 'package:komentory/utils/constants.dart';
 import 'package:komentory/screens/application.dart';
 
 Future<void> main() async {
@@ -28,13 +29,16 @@ Future<void> main() async {
   runApp(const KomentoryApp());
 
   // Set default settings for the desktop app window.
+  // Skip this step for mobile platforms.
   // See: https://pub.dev/packages/bitsdojo_window
-  doWhenWindowReady(() {
-    const initialSize = Size(800, 500);
-    appWindow.title = 'Komentory > Your online focus group for everything';
-    appWindow.minSize = initialSize;
-    appWindow.size = initialSize;
-    appWindow.alignment = Alignment.center;
-    appWindow.show();
-  });
+  if (isDesktop) {
+    doWhenWindowReady(() {
+      const initialSize = Size(800, 500);
+      appWindow.title = 'Komentory > Your online focus group for everything';
+      appWindow.minSize = initialSize;
+      appWindow.size = initialSize;
+      appWindow.alignment = Alignment.center;
+      appWindow.show();
+    });
+  }
 }

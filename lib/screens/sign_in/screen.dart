@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/screens/sign_in/form.dart';
@@ -16,32 +16,36 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    return MoveWindow(
-      child: Container(
-        color: MediaQuery.of(context).platformBrightness == Brightness.light
-            ? KomentoryLightTheme.background.color
-            : KomentoryDarkTheme.background.color,
-        child: SafeArea(
-          bottom: false,
-          child: Scaffold(
-            body: Row(
-              children: [
-                const Expanded(
-                  flex: 1,
-                  child: Center(
-                    child: SizedBox(
-                      width: 300.0,
-                      height: 300.0,
-                      child: SignInForm(),
-                    ),
+    return Container(
+      color: MediaQuery.of(context).platformBrightness == Brightness.light
+          ? KomentoryLightTheme.background.color
+          : KomentoryDarkTheme.background.color,
+      child: SafeArea(
+        bottom: false,
+        child: Scaffold(
+          body: ResponsiveRowColumn(
+            rowMainAxisAlignment: MainAxisAlignment.center,
+            rowPadding: const EdgeInsets.all(32.0),
+            columnPadding: const EdgeInsets.all(32.0),
+            columnSpacing: 32.0,
+            layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                ? ResponsiveRowColumnType.COLUMN
+                : ResponsiveRowColumnType.ROW,
+            children: [
+              ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Image.asset('assets/images/magic-link.png'),
+              ),
+              const ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Center(
+                  child: SizedBox(
+                    width: 300.0,
+                    child: SignInForm(),
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Image.asset('assets/images/magic-link.png'),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
