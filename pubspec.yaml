@@ -16,6 +16,7 @@ dependencies:
   bitsdojo_window: ^0.1.1+1
   flutter_dotenv: ^5.0.2
   flutter_svg: ^0.23.0+1
+  connectivity_plus: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -29,4 +30,5 @@ flutter:
     - .env
     - assets/brand/
     - assets/icons/
+    - assets/images/
     - assets/google_fonts/

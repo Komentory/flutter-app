@@ -22,7 +22,7 @@ class _SignInFormState extends State<SignInForm> {
         ),
         const SizedBox(height: 16),
         Text(
-          'Choose the login method that is most convenient for you and we\'re already waiting for you inside.',
+          'Please choose a comfortable way to login to Komentory and join us soon. We\'re waiting for you inside!',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText2,
         ),
@@ -49,7 +49,7 @@ class _SignInFormState extends State<SignInForm> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
+              vertical: 16.0,
             ),
           ),
           onPressed: () {},
@@ -77,7 +77,7 @@ class _SignInFormState extends State<SignInForm> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
+              vertical: 16.0,
             ),
           ),
           onPressed: () {},
@@ -105,7 +105,7 @@ class _SignInFormState extends State<SignInForm> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
+              vertical: 16.0,
             ),
           ),
           onPressed: () {},

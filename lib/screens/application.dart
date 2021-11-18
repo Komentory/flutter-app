@@ -7,6 +7,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/screens/sign_in/screen.dart';
+import 'package:komentory/screens/no_connection/screen.dart';
 
 /// Main application widget.
 class KomentoryApp extends StatelessWidget {
@@ -38,6 +39,14 @@ class KomentoryApp extends StatelessWidget {
             primary: KomentoryLightTheme.primary.color,
           ),
         ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            primary: KomentoryDarkTheme.primary.color,
+            side: BorderSide(
+              color: KomentoryDarkTheme.primary.color,
+            ),
+          ),
+        ),
       ),
       darkTheme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: KomentoryDarkTheme.background.color,
@@ -60,6 +69,14 @@ class KomentoryApp extends StatelessWidget {
             primary: KomentoryDarkTheme.primary.color,
           ),
         ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            primary: KomentoryDarkTheme.primary.color,
+            side: BorderSide(
+              color: KomentoryDarkTheme.primary.color,
+            ),
+          ),
+        ),
       ),
       themeMode: ThemeMode.system,
       builder: (context, widget) => ResponsiveWrapper.builder(
@@ -76,6 +93,9 @@ class KomentoryApp extends StatelessWidget {
         '/sign-in': (_) => isDesktop
             ? MoveWindow(child: const SignInScreen())
             : const SignInScreen(),
+        '/no-connection': (_) => isDesktop
+            ? MoveWindow(child: const NoConnection())
+            : const NoConnection(),
       },
     );
   }
