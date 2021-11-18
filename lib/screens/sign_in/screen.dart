@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/screens/sign_in/form.dart';
@@ -34,13 +36,16 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               ResponsiveRowColumnItem(
                 rowFlex: 1,
-                child: Image.asset('assets/images/magic-link.png'),
+                child: SvgPicture.network(
+                  "${dotenv.get('SUPABASE_STORAGE_URL')}/welcome_${Theme.of(context).brightness}.svg",
+                  height: 256.0,
+                ),
               ),
               const ResponsiveRowColumnItem(
                 rowFlex: 1,
                 child: Center(
                   child: SizedBox(
-                    width: 300.0,
+                    width: 284.0,
                     child: SignInForm(),
                   ),
                 ),

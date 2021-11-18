@@ -21,7 +21,7 @@ enum KomentoryLightTheme {
 
 /// Extension for define the Komentory brand's colors (light theme).
 extension KomentoryLightThemeExtension on KomentoryLightTheme {
-  // Set colors.
+  // Getter for colors.
   Color get color {
     switch (this) {
       case KomentoryLightTheme.primary:
@@ -43,7 +43,7 @@ enum KomentoryDarkTheme {
 
 /// Extension for define the Komentory brand's colors.
 extension KomentoryDarkThemeExtension on KomentoryDarkTheme {
-  // Set colors.
+  // Getter for colors.
   Color get color {
     switch (this) {
       case KomentoryDarkTheme.primary:

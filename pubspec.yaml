@@ -29,5 +29,4 @@ flutter:
     - .env
     - assets/brand/
     - assets/icons/
-    - assets/images/
     - assets/google_fonts/

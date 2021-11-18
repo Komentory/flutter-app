@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter_svg/svg.dart';
 
 /// Form for the Sign In screen.
@@ -25,7 +26,7 @@ class _SignInFormState extends State<SignInForm> {
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText2,
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
         ElevatedButton(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +54,7 @@ class _SignInFormState extends State<SignInForm> {
           ),
           onPressed: () {},
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 12),
         ElevatedButton(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +82,7 @@ class _SignInFormState extends State<SignInForm> {
           ),
           onPressed: () {},
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 12),
         ElevatedButton(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
