@@ -2,7 +2,7 @@
     package="com.example.komentory">
   <uses-permission android:name="android.permission.INTERNET" />
   <application
-      android:label="komentory"
+      android:label="Komentory"
       android:icon="@mipmap/ic_launcher">
       <activity
           android:name=".MainActivity"

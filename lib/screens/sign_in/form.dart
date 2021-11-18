@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 
 /// Form for the Sign In screen.
 class SignInForm extends StatefulWidget {
@@ -29,9 +30,9 @@ class _SignInFormState extends State<SignInForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                'assets/icons/google_logo.png',
-                scale: 24,
+              SvgPicture.asset(
+                'assets/icons/google_logo.svg',
+                width: 24,
               ),
               const SizedBox(width: 16),
               const Text(
@@ -57,9 +58,9 @@ class _SignInFormState extends State<SignInForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                'assets/icons/facebook_logo.png',
-                scale: 24,
+              SvgPicture.asset(
+                'assets/icons/facebook_logo.svg',
+                width: 24,
               ),
               const SizedBox(width: 16),
               const Text(
@@ -85,9 +86,9 @@ class _SignInFormState extends State<SignInForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                'assets/icons/discord_logo.png',
-                scale: 24,
+              SvgPicture.asset(
+                'assets/icons/discord_logo.svg',
+                width: 24,
               ),
               const SizedBox(width: 16),
               const Text(
