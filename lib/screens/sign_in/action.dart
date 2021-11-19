@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_svg/svg.dart';
 
-/// Form for the Sign In screen.
-class SignInForm extends StatefulWidget {
-  const SignInForm({Key? key}) : super(key: key);
+/// Action for the Sign In screen.
+class SignInAction extends StatefulWidget {
+  const SignInAction({Key? key}) : super(key: key);
 
   @override
-  _SignInFormState createState() => _SignInFormState();
+  _SignInActionState createState() => _SignInActionState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+/// State for the Sign In screen.
+class _SignInActionState extends State<SignInAction> {
+  // TODO: Implement Supabase auth actions.
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text(
-          'Hey, friend!',
-          style: Theme.of(context).textTheme.headline4,
-        ),
-        const SizedBox(height: 16),
-        Text(
-          'Please choose a comfortable way to login to Komentory and join us soon. We\'re waiting for you inside!',
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText2,
-        ),
-        const SizedBox(height: 32),
         ElevatedButton(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -43,14 +34,12 @@ class _SignInFormState extends State<SignInForm> {
             ],
           ),
           style: ElevatedButton.styleFrom(
-            onPrimary: Colors.black87,
+            onPrimary: const Color(0xFF333333),
             primary: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 16.0,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 18.0),
           ),
           onPressed: () {},
         ),
@@ -76,9 +65,7 @@ class _SignInFormState extends State<SignInForm> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 16.0,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 18.0),
           ),
           onPressed: () {},
         ),
@@ -104,9 +91,7 @@ class _SignInFormState extends State<SignInForm> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 16.0,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 18.0),
           ),
           onPressed: () {},
         ),

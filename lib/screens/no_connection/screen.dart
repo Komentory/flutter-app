@@ -1,77 +1,57 @@
-import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_svg/svg.dart';
 
-class NoConnection extends StatefulWidget {
-  const NoConnection({Key? key}) : super(key: key);
+import 'package:komentory/utils/constants.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
-  @override
-  State<NoConnection> createState() => _NoConnectionState();
-}
+import 'package:komentory/screens/no_connection/action.dart';
+import 'package:komentory/screens/no_connection/content.dart';
 
-class _NoConnectionState extends State<NoConnection> {
-  //
-  Future<void> _checkConnectivityState() async {
-    final ConnectivityResult result = await Connectivity().checkConnectivity();
-
-    if (result != ConnectivityResult.none) {
-      Navigator.pushNamed(context, '/sign-in');
-    }
-  }
+/// Screen for the No Connection page.
+class NoConnectionScreen extends StatelessWidget {
+  const NoConnectionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: SizedBox(
-            width: 284.0,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SvgPicture.asset(
+    return Container(
+      color: MediaQuery.of(context).platformBrightness == Brightness.light
+          ? KomentoryLightTheme.background.color
+          : KomentoryDarkTheme.background.color,
+      child: SafeArea(
+        bottom: false,
+        child: Scaffold(
+          body: ResponsiveRowColumn(
+            rowMainAxisAlignment: MainAxisAlignment.center,
+            rowPadding: const EdgeInsets.all(32.0),
+            columnPadding: const EdgeInsets.all(32.0),
+            columnSpacing: 32.0,
+            layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                ? ResponsiveRowColumnType.COLUMN
+                : ResponsiveRowColumnType.ROW,
+            children: [
+              ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: SvgPicture.asset(
                   "assets/images/no-connection_${Theme.of(context).brightness}.svg",
+                  width: 256.0,
                   height: 256.0,
                 ),
-                Text(
-                  'Oops...',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'There doesn\'t seem to be an Internet connection here! Try connecting to another network and try again.',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                const SizedBox(height: 32),
-                OutlinedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 16.0,
-                      ),
+              ),
+              ResponsiveRowColumnItem(
+                rowFlex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    NoConnectionScreenContent(),
+                    SizedBox(height: 32.0),
+                    SizedBox(
+                      width: 284.0,
+                      child: NoConnectionScreenAction(),
                     ),
-                    onPressed: () => _checkConnectivityState(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        Icon(CupertinoIcons.refresh, size: 24.0),
-                        SizedBox(width: 16.0),
-                        Text(
-                          'Try to re-connect',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    )),
-              ],
-            ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

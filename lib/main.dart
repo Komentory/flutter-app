@@ -25,7 +25,7 @@ Future<void> main() async {
   // See: https://pub.dev/packages/flutter_dotenv#usage
   await dotenv.load(fileName: '.env');
 
-  // Run application.
+  // Run main application widget.
   runApp(const KomentoryApp());
 
   // Set default settings for the desktop app window.

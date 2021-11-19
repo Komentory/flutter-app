@@ -94,8 +94,8 @@ class KomentoryApp extends StatelessWidget {
             ? MoveWindow(child: const SignInScreen())
             : const SignInScreen(),
         '/no-connection': (_) => isDesktop
-            ? MoveWindow(child: const NoConnection())
-            : const NoConnection(),
+            ? MoveWindow(child: const NoConnectionScreen())
+            : const NoConnectionScreen(),
       },
     );
   }
