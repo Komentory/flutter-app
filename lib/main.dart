@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/screens/application.dart';
 
 Future<void> main() async {
+  // Add instance of the WidgetsBinding.
+  // See: https://github.com/supabase/supabase-flutter#getting-started
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Add environment variables to app.
+  // See: https://pub.dev/packages/flutter_dotenv#usage
+  await dotenv.load(fileName: '.env');
+
+  // Add Supabase connector.
+  // See: https://github.com/supabase-community/supabase-flutter-quickstart/blob/main/lib/main.dart
+  await Supabase.initialize(
+    url: dotenv.get('SUPABASE_ENDPOINT_URL'),
+    anonKey: dotenv.get('SUPABASE_ANON_KEY'),
+    authCallbackUrlHostname: 'login-callback',
+    debug: true,
+  );
+
   // Add license for Google Fonts via Flutter license generator.
   //
   // Once you've decided on the fonts you want in your published app,
@@ -20,10 +38,6 @@ Future<void> main() async {
     final license = await rootBundle.loadString('assets/google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
-
-  // Add environment variables to app.
-  // See: https://pub.dev/packages/flutter_dotenv#usage
-  await dotenv.load(fileName: '.env');
 
   // Run main application widget.
   runApp(const KomentoryApp());
