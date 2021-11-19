@@ -1,6 +1,6 @@
 # Komentory
 
-A new Flutter project.
+Your online focus group for everything.
 
 ## Getting Started
 
