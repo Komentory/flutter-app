@@ -9,7 +9,7 @@ import 'package:komentory/utils/constants.dart';
 import 'package:komentory/screens/application.dart';
 
 Future<void> main() async {
-  // Add license for Google Fonts.
+  // Add license for Google Fonts via Flutter license generator.
   //
   // Once you've decided on the fonts you want in your published app,
   // you should add the appropriate licenses to your flutter

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer' as developer;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,20 +21,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  ConnectivityResult _connectionStatus = ConnectivityResult.none;
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
   // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initConnectivity() async {
-    late ConnectivityResult result;
-
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      result = await Connectivity().checkConnectivity();
-    } on PlatformException catch (_) {
-      return;
-    }
-
+  Future<void> _initConnectivity() async {
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
@@ -41,18 +32,21 @@ class _SignInScreenState extends State<SignInScreen> {
       return Future.value(null);
     }
 
-    return _updateConnectionStatus(result);
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      ConnectivityResult result = await Connectivity().checkConnectivity();
+      return _updateConnectionStatus(result);
+    } on PlatformException catch (e) {
+      developer.log('Couldn\'t check connectivity status', error: e);
+      return;
+    }
   }
 
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    setState(() {
-      _connectionStatus = result;
-
-      // Push No Connection screen, if connection status is `none`.
-      if (_connectionStatus == ConnectivityResult.none) {
-        Navigator.pushNamed(context, '/no-connection');
-      }
-    });
+    // Push No Connection screen, if connection status is `none`.
+    if (result == ConnectivityResult.none) {
+      Navigator.pushNamed(context, '/no-connection');
+    }
   }
 
   @override
@@ -60,7 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
     super.initState();
 
     // Get initional connection status.
-    initConnectivity();
+    _initConnectivity();
 
     // Subscribe to connection status updates.
     _connectivitySubscription =
