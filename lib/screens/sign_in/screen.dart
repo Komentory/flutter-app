@@ -5,22 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:komentory/screens/sign_in/content.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:komentory/utils/constants.dart';
+import 'package:komentory/utils/auth_state.dart';
 import 'package:komentory/screens/sign_in/action.dart';
+import 'package:komentory/screens/sign_in/content.dart';
 
 /// Screen for the Sign In page.
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+/// AuthState for the Sign In screen.
+///
+/// See: https://supabase.io/docs/guides/with-flutter#set-up-splash-screen
+class _SignInScreenState extends AuthState<SignInScreen> {
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -45,7 +49,10 @@ class _SignInScreenState extends State<SignInScreen> {
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     // Push No Connection screen, if connection status is `none`.
     if (result == ConnectivityResult.none) {
-      Navigator.pushNamed(context, '/no-connection');
+      Navigator.of(context).pushNamedAndRemoveUntil(
+        '/no-connection',
+        (route) => false,
+      );
     }
   }
 

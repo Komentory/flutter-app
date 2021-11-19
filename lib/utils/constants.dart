@@ -1,6 +1,28 @@
-import 'package:flutter/material.dart' show Color;
+import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, TargetPlatform;
+
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+/// Init Suopabase connector.
+final supabase = Supabase.instance.client;
+
+/// Toast with messages.
+extension ShowSnackBar on BuildContext {
+  void showSnackBar({
+    required String message,
+    Color backgroundColor = Colors.white,
+  }) {
+    ScaffoldMessenger.of(this).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: backgroundColor,
+    ));
+  }
+
+  void showErrorSnackBar({required String message}) {
+    showSnackBar(message: message, backgroundColor: Colors.red);
+  }
+}
 
 // See: https://stackoverflow.com/a/58552304
 
