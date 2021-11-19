@@ -1,4 +1,4 @@
-package com.example.komentory
+package com.truewebartisans.komentory
 
 import io.flutter.embedding.android.FlutterActivity
 
