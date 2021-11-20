@@ -16,6 +16,8 @@ class _SplashScreenState extends AuthState<SplashScreen> {
   void initState() {
     // Recovery Supabase session.
     recoverSupabaseSession();
+
+    // Init state.
     super.initState();
   }
 
