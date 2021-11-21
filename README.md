@@ -2,15 +2,15 @@
 
 A powerful multiplatform application with [Flutter](https://flutter.dev) and [Supabase](https://github.com/supabase) for the Komentory project.
 
-Ready to use:
+Currently in development:
 
+- [x] Apple iOS 14+
 - [x] Google Android 10+
 
-Under active development:
+Queued for the future development:
 
 - [ ] Web
 - [ ] GNU/Linux
-- [ ] Apple iOS
 - [ ] Apple macOS
 - [ ] Microsoft Windows
 
@@ -29,7 +29,7 @@ For help getting started with Flutter, view our [online documentation](https://f
 
 | Logo                                                                                                                                                                                                                       | Description                                                                                                                                                                                                                                                                   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Supabase Badge](https://user-images.githubusercontent.com/11155743/142758333-33229ef2-e051-437b-af32-7d8b8d7a71ad.png)                                                                                                   | The entire backend of the Komentory project (including user authorization and file storage) uses the open source IaaS solution from [Supabase](https://supabase.io).                                                                                                          |
+| ![Supabase Badge](https://user-images.githubusercontent.com/11155743/142758333-33229ef2-e051-437b-af32-7d8b8d7a71ad.png)                                                                                                   | The entire backend of the Komentory project (including user authorization and file storage) uses the open source Firebase alternative solution from [Supabase](https://supabase.io).                                                                                                          |
 | [![DigitalOcean Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg)](https://www.digitalocean.com/?refcode=b41859fa9b6e&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge) | All web parts of the Komentory project successfully runs on the DigitalOcean Apps platform, which allows you to do automatic deployment from a repository. Want to try too? [Follow this link](https://m.do.co/c/b41859fa9b6e), sign up, and get **$100** credit for 60 days. |
 
 ## ⚠️ License
