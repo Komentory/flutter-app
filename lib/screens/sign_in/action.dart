@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 import 'package:flutter_svg/svg.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
+import 'package:flutter/material.dart';
 import 'package:komentory/utils/constants.dart';
+import 'package:komentory/utils/extensions.dart';
 import 'package:komentory/utils/auth_state.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Action for the Sign In screen.
 class SignInAction extends StatefulWidget {
@@ -17,15 +16,15 @@ class SignInAction extends StatefulWidget {
 
 /// State for the Sign In screen.
 class _SignInActionState extends AuthState<SignInAction> {
-  // Initial state.
+  // Define initial state.
   bool _isLoading = false;
 
   // Function for sign in with third-party provider.
   Future<void> _signInWithProvider(Provider provider) async {
-    //
+    // Change state for loader.
     setState(() => _isLoading = true);
 
-    //
+    // Supabase authenticator for the third-party provider.
     final response = await supabase.auth.signInWithProvider(
       provider,
       options: AuthOptions(
@@ -33,14 +32,14 @@ class _SignInActionState extends AuthState<SignInAction> {
       ),
     );
 
-    //
-    if (response) {
-      context.showSnackBar(message: 'Success sign in!');
-    } else {
-      context.showErrorSnackBar(message: 'Error sign in!');
+    // If auth failed, show error message in snack bar.
+    if (!response) {
+      context.showErrorSnackBar(
+        message: 'Oops... Authentication failed! Please try again.',
+      );
     }
 
-    //
+    // Change state for loader.
     setState(() => _isLoading = false);
   }
 
@@ -71,11 +70,7 @@ class _SignInActionState extends AuthState<SignInAction> {
           ),
           style: ElevatedButton.styleFrom(
             onPrimary: const Color(0xFF333333),
-            primary: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
+            primary: const Color(0xFFFFFFFF),
           ),
           onPressed: () =>
               _isLoading ? null : _signInWithProvider(Provider.google),
@@ -97,12 +92,8 @@ class _SignInActionState extends AuthState<SignInAction> {
             ],
           ),
           style: ElevatedButton.styleFrom(
-            onPrimary: Colors.white,
+            onPrimary: const Color(0xFFFFFFFF),
             primary: const Color(0xFF1877F2),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
           ),
           onPressed: () =>
               _isLoading ? null : _signInWithProvider(Provider.facebook),
@@ -124,12 +115,8 @@ class _SignInActionState extends AuthState<SignInAction> {
             ],
           ),
           style: ElevatedButton.styleFrom(
-            onPrimary: Colors.white,
+            onPrimary: const Color(0xFFFFFFFF),
             primary: const Color(0xFF5865F2),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
           ),
           onPressed: () =>
               _isLoading ? null : _signInWithProvider(Provider.discord),

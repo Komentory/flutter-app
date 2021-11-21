@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
-
+import 'package:komentory/utils/constants.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:komentory/screens/application.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-import 'package:komentory/utils/constants.dart';
-import 'package:komentory/screens/application.dart';
 
 Future<void> main() async {
   // Add instance of the WidgetsBinding.

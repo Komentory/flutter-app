@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-
-import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/utils/theme_styles.dart';
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:komentory/screens/splash/screen.dart';
-import 'package:komentory/screens/account/screen.dart';
+import 'package:komentory/screens/main/screen.dart';
 import 'package:komentory/screens/sign_in/screen.dart';
 import 'package:komentory/screens/no_connection/screen.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 /// Main application widget.
 class KomentoryApp extends StatelessWidget {
@@ -20,8 +18,8 @@ class KomentoryApp extends StatelessWidget {
     return MaterialApp(
       title: 'Komentory',
       debugShowCheckedModeBanner: false,
-      theme: lightThemeData(context),
-      darkTheme: darkThemeData(context),
+      theme: context.lightThemeData(),
+      darkTheme: context.darkThemeData(),
       themeMode: ThemeMode.system,
       builder: (context, widget) => ResponsiveWrapper.builder(
         ClampingScrollWrapper.builder(context, widget!),
@@ -40,9 +38,9 @@ class KomentoryApp extends StatelessWidget {
         '/sign-in': (_) => isDesktop
             ? MoveWindow(child: const SignInScreen())
             : const SignInScreen(),
-        '/account': (_) => isDesktop
-            ? MoveWindow(child: const AccountScreen())
-            : const AccountScreen(),
+        '/main': (_) => isDesktop
+            ? MoveWindow(child: const MainScreen())
+            : const MainScreen(),
         '/no-connection': (_) => isDesktop
             ? MoveWindow(child: const NoConnectionScreen())
             : const NoConnectionScreen(),

@@ -1,17 +1,12 @@
 import 'dart:async';
-import 'dart:developer' as developer;
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:flutter_svg/svg.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
-import 'package:komentory/utils/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:komentory/utils/extensions.dart';
 import 'package:komentory/utils/auth_state.dart';
 import 'package:komentory/screens/sign_in/action.dart';
 import 'package:komentory/screens/sign_in/content.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 /// Screen for the Sign In page.
 class SignInScreen extends StatefulWidget {
@@ -27,45 +22,22 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends AuthState<SignInScreen> {
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> _initConnectivity() async {
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) {
-      return Future.value(null);
-    }
-
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      ConnectivityResult result = await Connectivity().checkConnectivity();
-      return _updateConnectionStatus(result);
-    } on PlatformException catch (e) {
-      developer.log('Couldn\'t check connectivity status', error: e);
-      return;
-    }
-  }
-
-  Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    // Push No Connection screen, if connection status is `none`.
-    if (result == ConnectivityResult.none) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        '/no-connection',
-        (route) => false,
-      );
-    }
-  }
-
   @override
   void initState() {
     super.initState();
 
-    // Get initional connection status.
-    _initConnectivity();
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (mounted) {
+      // Get initional connection status.
+      context.initConnectivity();
+    }
 
     // Subscribe to connection status updates.
-    _connectivitySubscription =
-        Connectivity().onConnectivityChanged.listen(_updateConnectionStatus);
+    _connectivitySubscription = Connectivity().onConnectivityChanged.listen(
+          context.updateConnectivityStatus,
+        );
   }
 
   @override
@@ -79,9 +51,7 @@ class _SignInScreenState extends AuthState<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: MediaQuery.of(context).platformBrightness == Brightness.light
-          ? KomentoryLightTheme.background.color
-          : KomentoryDarkTheme.background.color,
+      color: context.themeAutoSwitcher(),
       child: SafeArea(
         bottom: false,
         child: Scaffold(

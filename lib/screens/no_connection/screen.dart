@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import 'package:komentory/utils/constants.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
+import 'package:flutter/material.dart';
+import 'package:komentory/utils/extensions.dart';
 import 'package:komentory/screens/no_connection/action.dart';
 import 'package:komentory/screens/no_connection/content.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 /// Screen for the No Connection page.
 class NoConnectionScreen extends StatelessWidget {
@@ -14,9 +12,7 @@ class NoConnectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: MediaQuery.of(context).platformBrightness == Brightness.light
-          ? KomentoryLightTheme.background.color
-          : KomentoryDarkTheme.background.color,
+      color: context.themeAutoSwitcher(),
       child: SafeArea(
         bottom: false,
         child: Scaffold(

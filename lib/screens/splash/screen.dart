@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:komentory/utils/constants.dart';
+import 'package:komentory/utils/extensions.dart';
 import 'package:komentory/utils/auth_state.dart';
 
 /// Screen for the Splash page (initial page of the app).
@@ -23,9 +24,14 @@ class _SplashScreenState extends AuthState<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(color: Color(0xFF00AB55)),
+    return Container(
+      color: context.themeAutoSwitcher(),
+      child: SafeArea(
+        child: Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(color: BrandColor.primary[500]),
+          ),
+        ),
       ),
     );
   }

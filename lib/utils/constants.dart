@@ -1,79 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, TargetPlatform;
-
+    show defaultTargetPlatform, TargetPlatform, kIsWeb;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Init Suopabase connector.
-final supabase = Supabase.instance.client;
-
-/// Toast with messages.
-extension ShowSnackBar on BuildContext {
-  void showSnackBar({
-    required String message,
-    Color backgroundColor = Colors.white,
-  }) {
-    ScaffoldMessenger.of(this).showSnackBar(SnackBar(
-      content: Text(message),
-      backgroundColor: backgroundColor,
-    ));
-  }
-
-  void showErrorSnackBar({required String message}) {
-    showSnackBar(message: message, backgroundColor: Colors.red);
-  }
-}
-
-// See: https://stackoverflow.com/a/58552304
+final SupabaseClient supabase = Supabase.instance.client;
 
 /// Desktop devices getter.
 /// See: https://github.com/bitsdojo/bitsdojo_window/issues/78
-get isDesktop {
-  return defaultTargetPlatform == TargetPlatform.macOS ||
-      defaultTargetPlatform == TargetPlatform.windows ||
-      defaultTargetPlatform == TargetPlatform.linux;
-}
+final bool isDesktop = (defaultTargetPlatform == TargetPlatform.macOS ||
+    defaultTargetPlatform == TargetPlatform.windows ||
+    defaultTargetPlatform == TargetPlatform.linux ||
+    kIsWeb); // if app runs on the web
 
-/// The enum for the Komentory brand's colors (light theme, by default).
-enum KomentoryLightTheme {
-  primary,
-  secondary,
-  background,
-}
+/// Define brand colors.
+/// See: https://gist.github.com/mikemimik/5ac2fa98fe6d132098603c1bd40263d5
+class BrandColor {
+  // Makes instantiate this class.
+  BrandColor._();
 
-/// Extension for define the Komentory brand's colors (light theme).
-extension KomentoryLightThemeExtension on KomentoryLightTheme {
-  // Getter for colors.
-  Color get color {
-    switch (this) {
-      case KomentoryLightTheme.primary:
-        return const Color(0xFF00AB55);
-      case KomentoryLightTheme.secondary:
-        return const Color(0xFF3E3E41);
-      case KomentoryLightTheme.background:
-        return const Color(0xFFF6F4EF);
-    }
-  }
-}
+  static const Map<int, Color> primary = <int, Color>{
+    // 50: Color(0xFF),
+    100: Color(0xFFBFEAD4),
+    // 200: Color(0xFF),
+    300: Color(0xFF80D5AA),
+    // 400: Color(0xFF),
+    500: Color(0xFF00AB55),
+    600: Color(0xFF008743),
+    700: Color(0xFF006231),
+    800: Color(0xFF004321),
+    // 900: Color(0xFF),
+  };
 
-/// The enum for the Komentory brand's colors (dark theme).
-enum KomentoryDarkTheme {
-  primary,
-  secondary,
-  background,
-}
-
-/// Extension for define the Komentory brand's colors.
-extension KomentoryDarkThemeExtension on KomentoryDarkTheme {
-  // Getter for colors.
-  Color get color {
-    switch (this) {
-      case KomentoryDarkTheme.primary:
-        return const Color(0xFF00AB55);
-      case KomentoryDarkTheme.secondary:
-        return const Color(0xFFF6F4EF);
-      case KomentoryDarkTheme.background:
-        return const Color(0xFF3E3E41);
-    }
-  }
+  static const Map<int, Color> secondary = <int, Color>{
+    // 50: Color(0xFF),
+    100: Color(0xFFFDFCFB),
+    // 200: Color(0xFF),
+    300: Color(0xFFF6F4EF),
+    // 400: Color(0xFF),
+    500: Color(0xFFE3DDCF),
+    600: Color(0xFF626268),
+    700: Color(0xFF3E3E41),
+    800: Color(0xFF333333),
+    // 900: Color(0xFF),
+  };
 }
