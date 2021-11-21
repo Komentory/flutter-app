@@ -5,6 +5,7 @@ import 'package:komentory/utils/constants.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:komentory/screens/application.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:komentory/utils/secure_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -22,6 +23,7 @@ Future<void> main() async {
     url: dotenv.get('SUPABASE_ENDPOINT_URL'),
     anonKey: dotenv.get('SUPABASE_ANON_KEY'),
     authCallbackUrlHostname: 'login-callback',
+    localStorage: SecureLocalStorage(),
     debug: true,
   );
 

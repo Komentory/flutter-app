@@ -20,11 +20,12 @@ class _MainScreenState extends AuthRequiredState<MainScreen> {
   // Define inizial state for selected bottom menu item.
   int _selectedIndex = 0;
 
-  late final List<Widget> _pages = <Widget>[
-    const MainElementProjectsContent(),
-    const MainElementNewProjectContent(),
-    const MainElementSearchContent(),
-    const MainElementAccountContent(),
+  //
+  late final List<Widget> _pages = const <Widget>[
+    MainElementProjectsContent(),
+    MainElementNewProjectContent(),
+    MainElementSearchContent(),
+    MainElementAccountContent(),
   ];
 
   // Switch to content of the bottom menu item, if clicked on it.

@@ -18,6 +18,7 @@ dependencies:
   flutter_svg: ^0.23.0+1
   connectivity_plus: ^2.0.3
   supabase_flutter: ^0.2.9
+  flutter_secure_storage: ^5.0.2
 
 dev_dependencies:
   flutter_test:

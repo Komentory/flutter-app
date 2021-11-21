@@ -39,12 +39,12 @@ extension BrandThemeData on BuildContext {
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: BrandColor.secondary[300],
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedIconTheme: const IconThemeData(size: 26.0),
+        unselectedIconTheme: const IconThemeData(size: 26.0),
         selectedItemColor: BrandColor.primary[500],
         unselectedItemColor: BrandColor.primary[300],
-        selectedLabelStyle: const TextStyle(fontSize: 11.0),
-        unselectedLabelStyle: const TextStyle(fontSize: 11.0),
       ),
     );
   }
@@ -84,12 +84,12 @@ extension BrandThemeData on BuildContext {
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: BrandColor.secondary[900],
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedIconTheme: const IconThemeData(size: 26.0),
+        unselectedIconTheme: const IconThemeData(size: 26.0),
         selectedItemColor: BrandColor.primary[500],
         unselectedItemColor: BrandColor.primary[300],
-        selectedLabelStyle: const TextStyle(fontSize: 11.0),
-        unselectedLabelStyle: const TextStyle(fontSize: 11.0),
       ),
     );
   }
