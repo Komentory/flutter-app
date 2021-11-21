@@ -55,38 +55,41 @@ class _SignInScreenState extends AuthState<SignInScreen> {
       child: SafeArea(
         bottom: false,
         child: Scaffold(
-          body: ResponsiveRowColumn(
-            rowMainAxisAlignment: MainAxisAlignment.center,
-            rowPadding: const EdgeInsets.all(32.0),
-            columnPadding: const EdgeInsets.all(32.0),
-            columnSpacing: 32.0,
-            layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
-                ? ResponsiveRowColumnType.COLUMN
-                : ResponsiveRowColumnType.ROW,
-            children: [
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: SvgPicture.asset(
-                  "assets/images/welcome_${Theme.of(context).brightness}.svg",
-                  width: 256.0,
-                  height: 256.0,
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: ResponsiveRowColumn(
+              rowMainAxisAlignment: MainAxisAlignment.center,
+              rowPadding: const EdgeInsets.all(32.0),
+              columnPadding: const EdgeInsets.all(32.0),
+              columnSpacing: 32.0,
+              layout: ResponsiveWrapper.of(context).isSmallerThan(TABLET)
+                  ? ResponsiveRowColumnType.COLUMN
+                  : ResponsiveRowColumnType.ROW,
+              children: [
+                ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  child: SvgPicture.asset(
+                    "assets/images/welcome_${Theme.of(context).brightness}.svg",
+                    width: 256.0,
+                    height: 256.0,
+                  ),
                 ),
-              ),
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    SignInScreenContent(),
-                    SizedBox(height: 32.0),
-                    SizedBox(
-                      width: 284.0,
-                      child: SignInAction(),
-                    ),
-                  ],
+                ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SignInScreenContent(),
+                      SizedBox(height: 32.0),
+                      SizedBox(
+                        width: 284.0,
+                        child: SignInAction(),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
