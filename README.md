@@ -1,6 +1,6 @@
-# 🌐 Multi platform application for [Komentory](https://komentory.com) project
+# 🎯 Multiplatform application for [Komentory](https://komentory.com) project
 
-A powerful multi platform application with [Flutter](https://flutter.dev) and [Supabase](https://github.com/supabase) for the Komentory project.
+A powerful multiplatform application with [Flutter](https://flutter.dev) and [Supabase](https://github.com/supabase) for the Komentory project.
 
 Ready to use:
 
