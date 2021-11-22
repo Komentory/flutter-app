@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/utils/extensions.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:komentory/utils/auth_required_state.dart';
 
@@ -22,37 +23,48 @@ class _MainElementAccountContentState
 
   // Called once a user id is received within `onAuthenticated()`.
   Future<void> _getProfile(String userId) async {
-    final response = await supabase
-        .from('profiles')
-        .select('username, avatar_url, website_url')
-        .eq('id', userId)
-        .single()
-        .execute();
+    try {
+      final response = await supabase
+          .from('profiles')
+          .select('username, avatar_url, website_url')
+          .eq('id', userId)
+          .single()
+          .execute();
 
-    final error = response.error;
+      if (response.error != null && response.status != 406) {
+        throw "Failed to load account: ${response.error?.message}";
+      }
 
-    if (error != null && response.status != 406) {
-      context.showErrorSnackBar(message: error.message);
-    }
-
-    final data = response.data;
-
-    if (data != null) {
-      // Update state with response data.
       setState(() {
-        _username = data['username'] as String;
-        _avatarUrl = data['avatar_url'] as String;
-        _websiteUrl = data['website_url'] as String;
+        _username = response.data['username'] as String;
+        _avatarUrl = response.data['avatar_url'] as String;
+        _websiteUrl = response.data['website_url'] as String;
       });
+
+      if (mounted) {
+        context.showSuccessSnackBar(
+          message: 'snack_bar.welcome_back_username'.tr(
+            namedArgs: {'username': _username},
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        context.showErrorSnackBar(message: e.toString());
+      }
     }
   }
 
   // Method for the user sign out.
   Future<void> _signOut() async {
-    final response = await supabase.auth.signOut();
-    final error = response.error;
-    if (error != null) {
-      context.showErrorSnackBar(message: error.message);
+    try {
+      final response = await supabase.auth.signOut();
+
+      if (response.error != null) {
+        throw "Failed to sign out: ${response.error?.message}";
+      }
+    } catch (e) {
+      context.showErrorSnackBar(message: e.toString());
     }
   }
 

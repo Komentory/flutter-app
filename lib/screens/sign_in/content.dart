@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/src/public_ext.dart';
 
 /// Content for the Sign In screen.
 class SignInScreenContent extends StatelessWidget {
@@ -9,12 +10,12 @@ class SignInScreenContent extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Hey, friend!',
+          'sign_in.hey_friend'.tr(),
           style: Theme.of(context).textTheme.headline4,
         ),
         const SizedBox(height: 16),
         Text(
-          'Please choose a comfortable way to login to Komentory and join us soon. We\'re waiting for you inside!',
+          'sign_in.choose_login_text'.tr(),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText2,
         ),

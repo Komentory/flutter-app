@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/utils/theme_styles.dart';
+import 'package:komentory/screens/main/screen.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:komentory/screens/splash/screen.dart';
-import 'package:komentory/screens/main/screen.dart';
 import 'package:komentory/screens/sign_in/screen.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:komentory/screens/no_connection/screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -18,6 +19,9 @@ class KomentoryApp extends StatelessWidget {
     return MaterialApp(
       title: 'Komentory',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: context.lightThemeData(),
       darkTheme: context.darkThemeData(),
       themeMode: ThemeMode.system,

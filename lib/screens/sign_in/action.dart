@@ -4,6 +4,7 @@ import 'package:komentory/utils/constants.dart';
 import 'package:komentory/utils/extensions.dart';
 import 'package:komentory/utils/auth_state.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Action for the Sign In screen.
@@ -61,10 +62,10 @@ class _SignInActionState extends AuthState<SignInAction> {
                 'assets/icons/google_logo.svg',
                 width: 24,
               ),
-              const SizedBox(width: 16),
-              const Text(
-                'Continue with Google',
-                style: TextStyle(fontSize: 16),
+              const SizedBox(width: 8.0),
+              Text(
+                'sign_in.button.google'.tr(),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),
@@ -84,10 +85,10 @@ class _SignInActionState extends AuthState<SignInAction> {
                 'assets/icons/facebook_logo.svg',
                 width: 24,
               ),
-              const SizedBox(width: 16),
-              const Text(
-                'Continue with Facebook',
-                style: TextStyle(fontSize: 16),
+              const SizedBox(width: 8.0),
+              Text(
+                'sign_in.button.facebook'.tr(),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),
@@ -107,10 +108,10 @@ class _SignInActionState extends AuthState<SignInAction> {
                 'assets/icons/discord_logo.svg',
                 width: 24,
               ),
-              const SizedBox(width: 16),
-              const Text(
-                'Continue with Discord',
-                style: TextStyle(fontSize: 16),
+              const SizedBox(width: 8.0),
+              Text(
+                'sign_in.button.discord'.tr(),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),

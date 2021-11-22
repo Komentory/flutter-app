@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:komentory/utils/extensions.dart';
+import 'package:easy_localization/src/public_ext.dart';
 
 /// Acton for the No Connection screen.
 class NoConnectionScreenAction extends StatelessWidget {
@@ -20,12 +21,12 @@ class NoConnectionScreenAction extends StatelessWidget {
           onPressed: context.checkConnectivityStatus,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Icon(CupertinoIcons.refresh, size: 24.0),
-              SizedBox(width: 16.0),
+            children: <Widget>[
+              const Icon(CupertinoIcons.refresh, size: 24.0),
+              const SizedBox(width: 8.0),
               Text(
-                'Try to re-connect',
-                style: TextStyle(fontSize: 16),
+                'no_connection.button.reconnect'.tr(),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),

@@ -19,6 +19,7 @@ dependencies:
   connectivity_plus: ^2.0.3
   supabase_flutter: ^0.2.9
   flutter_secure_storage: ^5.0.2
+  easy_localization: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -35,3 +36,4 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/google_fonts/
+    - assets/translations/

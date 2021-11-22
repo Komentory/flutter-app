@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
@@ -39,8 +40,19 @@ Future<void> main() async {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
+  // Init localization.
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
   // Run main application widget.
-  runApp(const KomentoryApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en', 'US'), Locale('ru', 'RU')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en', 'US'),
+      child: const KomentoryApp(),
+    ),
+  );
 
   // Set default settings for the desktop app window.
   // Skip this step for mobile platforms.

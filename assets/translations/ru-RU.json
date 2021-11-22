@@ -1,0 +1,21 @@
+{
+  "sign_in": {
+    "hey_friend": "Привет, друг!",
+    "choose_login_text": "Пожалуйста, выбери удобный способ входа в Komentory и присоединяйся к нам уже сейчас. Мы ждем тебя внутри!",
+    "button": {
+      "google": "Войти с помощью Google",
+      "facebook": "Войти с помощью Facebook",
+      "discord": "Войти с помощью Discord"
+    }
+  },
+  "no_connection": {
+    "oops": "Упс...",
+    "no_internet_text": "Похоже, здесь нет подключения к Интернету! Попробуйте подключиться к другой сети и повторите попытку.",
+    "button": {
+      "reconnect": "Попробовать снова"
+    }
+  },
+  "snack_bar": {
+    "welcome_back_username": "Добро пожаловать, @{username}!"
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/src/public_ext.dart';
 
 /// Content for the No Connection screen.
 class NoConnectionScreenContent extends StatelessWidget {
@@ -10,13 +11,13 @@ class NoConnectionScreenContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Oops...',
+          'no_connection.oops'.tr(),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline4,
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 16.0),
         Text(
-          'There doesn\'t seem to be an Internet connection here! Try connecting to another network and try again.',
+          'no_connection.no_internet_text'.tr(),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText2,
         ),
