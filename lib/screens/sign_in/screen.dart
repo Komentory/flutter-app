@@ -20,6 +20,10 @@ class SignInScreen extends StatefulWidget {
 ///
 /// See: https://supabase.io/docs/guides/with-flutter#set-up-splash-screen
 class _SignInScreenState extends AuthState<SignInScreen> {
+  // Create a new Scaffold Key.
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  // Define channel for cheking Internet connection on this screen.
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
   @override
@@ -55,6 +59,7 @@ class _SignInScreenState extends AuthState<SignInScreen> {
       child: SafeArea(
         bottom: false,
         child: Scaffold(
+          key: _scaffoldKey,
           body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: ResponsiveRowColumn(

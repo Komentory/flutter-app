@@ -9,6 +9,7 @@ import 'package:komentory/screens/main/elements/account/content.dart';
 import 'package:komentory/screens/main/elements/projects/content.dart';
 import 'package:komentory/screens/main/elements/new_project/content.dart';
 
+/// Screen for the Main page.
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -16,11 +17,16 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
+/// State for the Main screen.
 class _MainScreenState extends AuthRequiredState<MainScreen> {
+  // Create a new Scaffold Key.
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
   // Define inizial state for selected bottom menu item.
+  // final String _title = 'Projects';
   int _selectedIndex = 0;
 
-  //
+  // List of widgets.
   late final List<Widget> _pages = const <Widget>[
     MainElementProjectsContent(),
     MainElementNewProjectContent(),
@@ -32,6 +38,20 @@ class _MainScreenState extends AuthRequiredState<MainScreen> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      // switch (index) {
+      //   case 0:
+      //     _title = 'Projects';
+      //     break;
+      //   case 1:
+      //     _title = 'New project';
+      //     break;
+      //   case 2:
+      //     _title = 'Search';
+      //     break;
+      //   case 3:
+      //     _title = 'Account';
+      //     break;
+      // }
     });
   }
 
@@ -70,6 +90,10 @@ class _MainScreenState extends AuthRequiredState<MainScreen> {
       color: context.themeAutoSwitcher(),
       child: SafeArea(
         child: Scaffold(
+          key: _scaffoldKey,
+          // appBar: AppBar(
+          //   title: Text(_title),
+          // ),
           body: IndexedStack(
             index: _selectedIndex,
             children: _pages,
@@ -94,7 +118,7 @@ class _MainScreenState extends AuthRequiredState<MainScreen> {
               ),
               BottomNavigationBarItem(
                 label: 'Account',
-                icon: Icon(CupertinoIcons.person),
+                icon: Icon(CupertinoIcons.person_fill),
               ),
             ],
           ),

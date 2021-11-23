@@ -13,10 +13,14 @@ class _MainElementProjectsContentState
     extends AuthState<MainElementProjectsContent> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Column(
-        children: const [
-          Text('Projects'),
+        children: [
+          Text(
+            'Projects',
+            style: Theme.of(context).textTheme.headline3,
+          ),
         ],
       ),
     );

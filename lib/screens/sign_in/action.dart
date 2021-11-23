@@ -4,8 +4,8 @@ import 'package:komentory/utils/constants.dart';
 import 'package:komentory/utils/extensions.dart';
 import 'package:komentory/utils/auth_state.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 /// Action for the Sign In screen.
 class SignInAction extends StatefulWidget {
@@ -26,18 +26,20 @@ class _SignInActionState extends AuthState<SignInAction> {
     setState(() => _isLoading = true);
 
     // Supabase authenticator for the third-party provider.
-    final response = await supabase.auth.signInWithProvider(
-      provider,
-      options: AuthOptions(
-        redirectTo: dotenv.get('SUPABASE_LOGIN_CALLBACK_URL'),
-      ),
-    );
-
-    // If auth failed, show error message in snack bar.
-    if (!response) {
-      context.showErrorSnackBar(
-        message: 'Oops... Authentication failed! Please try again.',
+    try {
+      final response = await supabase.auth.signInWithProvider(
+        provider,
+        options: AuthOptions(
+          redirectTo: dotenv.get('SUPABASE_LOGIN_CALLBACK_URL'),
+        ),
       );
+
+      if (!response) {
+        // If auth failed, show error message in snack bar.
+        throw 'snack_bar.auth_failed'.tr();
+      }
+    } catch (e) {
+      context.showErrorSnackBar(message: e.toString());
     }
 
     // Change state for loader.

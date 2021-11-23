@@ -85,7 +85,7 @@ extension ShowSnackBar on BuildContext {
       SnackBar(
         padding: const EdgeInsets.symmetric(
           horizontal: 20.0,
-          vertical: 20.0,
+          vertical: 18.0,
         ),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
@@ -95,7 +95,7 @@ extension ShowSnackBar on BuildContext {
         content: Row(
           children: <Widget>[
             Icon(icon, color: iconColor, size: 24.0),
-            const SizedBox(width: 16.0),
+            const SizedBox(width: 8.0),
             Text(message, style: TextStyle(color: textColor)),
           ],
         ),

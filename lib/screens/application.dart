@@ -6,7 +6,7 @@ import 'package:komentory/screens/main/screen.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:komentory/screens/splash/screen.dart';
 import 'package:komentory/screens/sign_in/screen.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:komentory/screens/no_connection/screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 

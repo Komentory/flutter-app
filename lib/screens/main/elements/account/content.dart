@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:komentory/utils/constants.dart';
 import 'package:komentory/utils/extensions.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:komentory/utils/auth_required_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MainElementAccountContent extends StatefulWidget {
   const MainElementAccountContent({Key? key}) : super(key: key);
@@ -40,14 +40,6 @@ class _MainElementAccountContentState
         _avatarUrl = response.data['avatar_url'] as String;
         _websiteUrl = response.data['website_url'] as String;
       });
-
-      if (mounted) {
-        context.showSuccessSnackBar(
-          message: 'snack_bar.welcome_back_username'.tr(
-            namedArgs: {'username': _username},
-          ),
-        );
-      }
     } catch (e) {
       if (mounted) {
         context.showErrorSnackBar(message: e.toString());
@@ -59,9 +51,9 @@ class _MainElementAccountContentState
   Future<void> _signOut() async {
     try {
       final response = await supabase.auth.signOut();
-
+      // Throw error if request failed.
       if (response.error != null) {
-        throw "Failed to sign out: ${response.error?.message}";
+        throw 'Failed to sign out! Details: ${response.error?.message}';
       }
     } catch (e) {
       context.showErrorSnackBar(message: e.toString());
@@ -78,24 +70,22 @@ class _MainElementAccountContentState
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          ClipOval(
-            child: Image.network(
-              _avatarUrl,
-              width: 128.0,
-              height: 128.0,
-            ),
+    return Column(
+      children: [
+        ClipOval(
+          child: Image.network(
+            _avatarUrl,
+            width: 128.0,
+            height: 128.0,
           ),
-          Text(_username),
-          Text(_websiteUrl),
-          ElevatedButton(
-            onPressed: _signOut,
-            child: const Text('Log out'),
-          ),
-        ],
-      ),
+        ),
+        Text(_username),
+        Text(_websiteUrl),
+        ElevatedButton(
+          onPressed: _signOut,
+          child: const Text('Log out'),
+        ),
+      ],
     );
   }
 }

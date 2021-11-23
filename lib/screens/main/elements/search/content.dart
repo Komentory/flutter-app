@@ -13,12 +13,10 @@ class _MainElementSearchContentState
     extends AuthState<MainElementSearchContent> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: const [
-          Text('Search'),
-        ],
-      ),
+    return Column(
+      children: const [
+        Text('Search'),
+      ],
     );
   }
 }

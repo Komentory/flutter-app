@@ -13,12 +13,10 @@ class _MainElementNewProjectContentState
     extends AuthState<MainElementNewProjectContent> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: const [
-          Text('New project'),
-        ],
-      ),
+    return Column(
+      children: const [
+        Text('New project'),
+      ],
     );
   }
 }

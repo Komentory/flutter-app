@@ -14,6 +14,10 @@ class SplashScreen extends StatefulWidget {
 
 /// State for the splash screen.
 class _SplashScreenState extends AuthState<SplashScreen> {
+  // Create a new Scaffold Key.
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  // Initialize the splash screen timer.
   Timer? recoverSessionTimer;
 
   @override
@@ -43,6 +47,7 @@ class _SplashScreenState extends AuthState<SplashScreen> {
       color: context.themeAutoSwitcher(),
       child: SafeArea(
         child: Scaffold(
+          key: _scaffoldKey,
           body: Center(
             child: CircularProgressIndicator(color: BrandColor.primary[500]),
           ),

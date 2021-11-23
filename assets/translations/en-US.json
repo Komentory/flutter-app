@@ -16,6 +16,8 @@
     }
   },
   "snack_bar": {
-    "welcome_back_username": "Welcome, @{username}!"
+    "welcome_back": "It's great to see you again!",
+    "auth_failed": "Authentication failed! Please try again.",
+    "password_recovery": "Password recovery on the process..."
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 /// Content for the No Connection screen.
 class NoConnectionScreenContent extends StatelessWidget {
